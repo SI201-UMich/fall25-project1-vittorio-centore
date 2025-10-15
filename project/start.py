@@ -1,8 +1,8 @@
 ### SI 201 Project 1: CSV
-### Name: Jackson Miller
-### Uniqname: miljack
-### UMID: 7012 3312
-### Collaborators: Vittorio Centore and ChatGPT 5.0 and Gemini Pro
+### Name: Vittorio Centore
+### Uniqname: vcentore
+### UMID: 8319 7025   
+### Collaborators: Jack Miller and ChatGPT 5.0 and Gemini Pro
 ### Gen AI Statement: Used ChatGPT for general potential function outlines for inputs, outputs, and usage,
 ### , and for our flowchart ideas. We used Gemini and ChatGPT collectively for general debugging help.
 
