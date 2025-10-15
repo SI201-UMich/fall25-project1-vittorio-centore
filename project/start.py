@@ -122,7 +122,7 @@ def find_upper_quartile_long_bills(data):
         return 0
 
     # sort to find 75th percentile (upper quartile)
-    valid_masses.sort()
+    valid_masses.sort() 
     index_75 = int(0.75 * len(valid_masses))
     upper_cutoff = valid_masses[index_75]
 
@@ -131,7 +131,7 @@ def find_upper_quartile_long_bills(data):
                   if p.get("body_mass_g") and p["body_mass_g"] >= upper_cutoff 
                   and p.get("bill_length_mm") and p["bill_length_mm"] > 42]
 
-    count =  len(long_bills)
+    count = len(long_bills)
 
     print(f">>> Penguins in top 25% body mass AND bill length > 42mm: {count}")
     return count
