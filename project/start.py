@@ -8,6 +8,7 @@
 
 import csv
 import unittest
+import math
 
 def load_data(csv_file: str):
     """
@@ -109,32 +110,27 @@ def select_heavy_bills(data):
 
 
 def find_upper_quartile_long_bills(data):
-    """
-    Identifies penguins in upper 25% of body mass 
-    that also have a bill length > 42 mm.
-    INPUT: data (list of dicts)
-    OUTPUT: num_upper_quartile_long_bills (int)
-    """
-
-    # collect valid masses
     valid_masses = [p["body_mass_g"] for p in data if p.get("body_mass_g")]
     if not valid_masses:
         return 0
 
-    # sort to find 75th percentile (upper quartile)
-    valid_masses.sort() 
-    index_75 = int(0.75 * len(valid_masses))
+    valid_masses.sort()
+    # Use floor to include 75th percentile and above
+    index_75 = math.floor(0.75 * len(valid_masses)) - 1
+    if index_75 < 0:
+        index_75 = 0
     upper_cutoff = valid_masses[index_75]
 
-    # filter penguins in upper quartile AND bill length > 42
-    long_bills = [p for p in data 
-                  if p.get("body_mass_g") and p["body_mass_g"] >= upper_cutoff 
-                  and p.get("bill_length_mm") and p["bill_length_mm"] > 42]
+    long_bills = [
+        p for p in data
+        if p.get("body_mass_g") and p["body_mass_g"] >= upper_cutoff
+        and p.get("bill_length_mm") and p["bill_length_mm"] > 42
+    ]
 
     count = len(long_bills)
-
     print(f">>> Penguins in top 25% body mass AND bill length > 42mm: {count}")
     return count
+
 
 
 def find_heavy_quartile_long_bills(data):
@@ -173,7 +169,7 @@ def find_heavy_gentoo_count(data):
 
 class test_work(unittest.TestCase):
     def test_load_data(self):
-        data = load_data("project_work/penguins.csv")
+        data = load_data("project/penguins.csv")
         self.assertIsInstance(data, list)
         self.assertGreater(len(data), 0)
         self.assertIsInstance(data[0], dict)
@@ -241,7 +237,7 @@ def main():
     OUTPUT: None
     """
 
-    file_path = "project_work/penguins.csv"
+    file_path = "project/penguins.csv"
 
     # Confirms the file path is correct          
     print(">>> Looking for:", file_path)    
