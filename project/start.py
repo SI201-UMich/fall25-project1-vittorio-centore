@@ -131,7 +131,7 @@ def find_upper_quartile_long_bills(data):
                   if p.get("body_mass_g") and p["body_mass_g"] >= upper_cutoff 
                   and p.get("bill_length_mm") and p["bill_length_mm"] > 42]
 
-    count = len(long_bills)
+    count =  len(long_bills)
 
     print(f">>> Penguins in top 25% body mass AND bill length > 42mm: {count}")
     return count
