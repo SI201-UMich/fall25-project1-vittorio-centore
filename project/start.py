@@ -134,7 +134,7 @@ def find_upper_quartile_long_bills(data):
     count = len(long_bills)
 
     print(f">>> Penguins in top 25% body mass AND bill length > 42mm: {count}")
-    return count 
+    return count
 
 
 def find_heavy_quartile_long_bills(data):
